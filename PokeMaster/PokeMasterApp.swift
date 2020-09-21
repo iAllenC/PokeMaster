@@ -11,7 +11,13 @@ import SwiftUI
 struct PokeMasterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PokemonList()
         }
+    }
+}
+
+struct PokeMasterApp_Previews: PreviewProvider {
+    static var previews: some View {
+        PokemonList()
     }
 }
