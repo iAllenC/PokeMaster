@@ -12,6 +12,15 @@ struct PokemonListView: View {
     @State var keywords: String = ""
     @EnvironmentObject var store: Store
     
+    var pokemonsToDisplay: [PokemonViewModel] {
+        store.appState.pokemonList.allPokemonsByID
+            .filter {
+                keywords.isEmpty ||
+                $0.name.lowercased().contains(keywords.lowercased()) ||
+                $0.nameEN.lowercased().contains(keywords.lowercased())
+            }
+    }
+    
     var pokemonScrollView: some View {
         ScrollView {
             TextField("搜索", text: $keywords)
@@ -21,8 +30,8 @@ struct PokemonListView: View {
                         .stroke(Color.pokemonGray, style: StrokeStyle(lineWidth: 1))
                 )
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
-            ForEach (store.appState.pokemonList.allPokemonsByID.filter { keywords.isEmpty || $0.name.lowercased().contains(keywords.lowercased()) || $0.nameEN.lowercased().contains(keywords.lowercased()) }) { item in
-                PokemonInfoRow(model: item, expanded: item.id == store.appState.pokemonList.expandingIndex)
+            ForEach (pokemonsToDisplay) { item in
+                PokemonInfoRow(model: item, expanded: item.id == store.appState.pokemonList.selectionState.expandingIndex)
                     .modifier(ExpandModifier() {
                         store.dispatch(.expandPokemonIndex(index: item.id))
                         store.dispatch(.loadAbilities(pokemon: item.pokemon))

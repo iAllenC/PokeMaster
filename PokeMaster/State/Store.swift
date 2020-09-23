@@ -104,8 +104,16 @@ class Store: ObservableObject {
             }
         case .cleanCache:
             appState.pokemonList.pokemons = nil
+            appState.pokemonList.abilities = nil
         case .expandPokemonIndex(index: let index):
-            appState.pokemonList.expandingIndex = appState.pokemonList.expandingIndex == index ? nil : index
+            let expanding = appState.pokemonList.selectionState.expandingIndex
+            if expanding == index {
+                appState.pokemonList.selectionState.expandingIndex = nil
+                appState.pokemonList.selectionState.panelPresented = false
+            } else {
+                appState.pokemonList.selectionState.expandingIndex = index
+                appState.pokemonList.selectionState.panelIndex = index
+            }
         case .loadAbilities(pokemon: let pokemon):
             appState.pokemonList.loadingAbilities = true
             appCommand = LoadAbilitiesCommand(pokemon: pokemon)
@@ -118,6 +126,19 @@ class Store: ObservableObject {
                 print(error)
                 #endif
             }
+        case .togglePanelPresenting(presenting: let presenting):
+            appState.pokemonList.selectionState.panelPresented = presenting
+        case .toggleSafariDisplaying(displaying: let displaying):
+            appState.pokemonList.isSFViewActive = displaying
+        case .favoratePokemon(pokemon: let pokemon):
+            print(pokemon)
+            if appState.settings.loginUser != nil {
+                appState.settings.loginUser!.favoritePokemonIDs.insert(pokemon.id)
+            } else {
+                appState.pokemonList.isFavoratingUnLogged = true
+            }
+        case .gotoSettings:
+            appState.mainTab.selection = .settings
         }
         return (appState, appCommand)
     }

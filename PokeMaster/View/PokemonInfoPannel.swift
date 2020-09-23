@@ -9,12 +9,14 @@ import SwiftUI
 
 struct PokemonInfoPannel: View {
     
+    @EnvironmentObject var store: Store
+    
     let model: PokemonViewModel
     
     @State var blurStyle = UIBlurEffect.Style.systemMaterial
     
     var abilities: [AbilityViewModel] {
-        AbilityViewModel.sample(pokemonID: model.id)
+        store.appState.pokemonList.ablityViewModels(for: model.pokemon) ?? []
     }
     
     var topIndicatorView: some View {
@@ -32,10 +34,10 @@ struct PokemonInfoPannel: View {
     var body: some View {
         VStack(spacing: 20) {
             topIndicatorView
-            Button("改变模糊效果") {
-                print("改变模糊效果")
-                blurStyle = blurStyle == .systemMaterial ? .systemMaterialDark : .systemMaterial
-            }
+//            Button("改变模糊效果") {
+//                print("改变模糊效果")
+//                blurStyle = blurStyle == .systemMaterial ? .systemMaterialDark : .systemMaterial
+//            }
             Header(model: model)
             pokemonDescription
             Divider()
@@ -159,7 +161,7 @@ extension PokemonInfoPannel {
 
 struct PokemonInfoPannel_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonInfoPannel(model: .sample(id: 1))
+        PokemonInfoPannel(model: .sample(id: 1)).environmentObject(Store())
             
     }
 }

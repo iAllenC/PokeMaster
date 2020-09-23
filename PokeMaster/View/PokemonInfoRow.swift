@@ -10,24 +10,51 @@ import KingfisherSwiftUI
 
 struct PokemonInfoRow: View {
     
+    @EnvironmentObject var store: Store
     let model: PokemonViewModel
     var expanded: Bool
+    
     
     var operationView: some View {
         HStack(spacing: expanded ? 20 : -30) {
             Spacer()
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                store.dispatch(.favoratePokemon(pokemon: model.pokemon))
+            }) {
                 Image(systemName: "star")
                     .modifier(ToolButtonModifier())
             }
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            Button(action: {
+                let presented = !store.appState.pokemonList.selectionState.panelPresented
+                store.dispatch(.togglePanelPresenting(presenting: presented))
+            }) {
                 Image(systemName: "chart.bar")
                     .modifier(ToolButtonModifier())
             }
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            //模态方式弹出
+            Button(action: {
+                let displaying = !store.appState.pokemonList.isSFViewActive
+                store.dispatch(.toggleSafariDisplaying(displaying: displaying))
+            }) {
                 Image(systemName: "info.circle")
                     .modifier(ToolButtonModifier())
+            }.sheet(isPresented: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)) {
+                SafariView(url: model.detailPageURL) {
+                    store.dispatch(.toggleSafariDisplaying(displaying: false))
+                }
             }
+//            NavigationLink(
+//                destination: SafariView(url: model.detailPageURL) { store.dispatch(.toggleSafariDisplaying(displaying: false)) }
+//                    .navigationBarTitle(
+//                        Text(model.name),
+//                        displayMode: .inline
+//                    ),
+//                isActive: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false),
+//                label: {
+//                    Image(systemName: "info.circle")
+//                        .modifier(ToolButtonModifier())
+//                }
+//            )
         }
         .padding(.bottom, 12)
         .opacity(expanded ? 1 : 0)
@@ -54,7 +81,7 @@ struct PokemonInfoRow: View {
             }.padding(.top, 12)
             Spacer()
             operationView
-                .frame(height: expanded ? .infinity : 0)
+                .frame(height: expanded ? 42 : 0)
         }
         .frame(height: expanded ? 120 : 80)
         .padding(.leading, 23)
@@ -69,17 +96,11 @@ struct PokemonInfoRow: View {
                                     endPoint: /*@START_MENU_TOKEN@*/.trailing/*@END_MENU_TOKEN@*/))
         })
         .padding(.horizontal)
-//        .onTapGesture {
-//            withAnimation(
-//                .spring(
-//                    response: 0.55,
-//                    dampingFraction: 0.425,
-//                    blendDuration: 0
-//                )
-//            ) {
-//                expanded.toggle()
-//            }
-//        }
+        .alert(isPresented: $store.appState.pokemonList.isFavoratingUnLogged, content: {
+            Alert(title: Text("需要登录"), primaryButton: .cancel(Text("取消")), secondaryButton: .default(Text("登录")) {
+                store.dispatch(.gotoSettings)
+            })
+        })
     }
 }
 
@@ -96,7 +117,7 @@ struct ToolButtonModifier: ViewModifier {
 
 struct PokemonInfoRow_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonInfoRow(model: PokemonViewModel.sample(id: 1), expanded: false)
-        PokemonInfoRow(model: PokemonViewModel.sample(id: 21), expanded: true)
+        PokemonInfoRow(model: PokemonViewModel.sample(id: 1), expanded: false).environmentObject(Store())
+        PokemonInfoRow(model: PokemonViewModel.sample(id: 21), expanded: true).environmentObject(Store())
     }
 }

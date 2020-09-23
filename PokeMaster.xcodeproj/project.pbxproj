@@ -22,6 +22,8 @@
 		BCA012CB2519EE4D009B2026 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = BCA012CA2519EE4D009B2026 /* KingfisherSwiftUI */; };
 		BCA012D02519F9ED009B2026 /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012CF2519F9ED009B2026 /* RegisterRequest.swift */; };
 		BCA012DC251A17C2009B2026 /* LoadAblitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012DB251A17C2009B2026 /* LoadAblitiesRequest.swift */; };
+		BCA012E2251AE861009B2026 /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012E1251AE861009B2026 /* OverlaySheet.swift */; };
+		BCA012EB251AF6F4009B2026 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012EA251AF6F4009B2026 /* SafariView.swift */; };
 		BCC0413E2518473100084678 /* PokeMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0413D2518473100084678 /* PokeMasterApp.swift */; };
 		BCC041422518473300084678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC041412518473300084678 /* Assets.xcassets */; };
 		BCC041452518473300084678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC041442518473300084678 /* Preview Assets.xcassets */; };
@@ -138,6 +140,8 @@
 		BC7F7DC72519CF3600C14402 /* LoadPokemonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPokemonRequest.swift; sourceTree = "<group>"; };
 		BCA012CF2519F9ED009B2026 /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
 		BCA012DB251A17C2009B2026 /* LoadAblitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAblitiesRequest.swift; sourceTree = "<group>"; };
+		BCA012E1251AE861009B2026 /* OverlaySheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
+		BCA012EA251AF6F4009B2026 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		BCC0413A2518473100084678 /* PokeMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC0413D2518473100084678 /* PokeMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeMasterApp.swift; sourceTree = "<group>"; };
 		BCC041412518473300084678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -495,6 +499,7 @@
 		BCC04204251848A500084678 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BCA012E1251AE861009B2026 /* OverlaySheet.swift */,
 				BCC04205251848C300084678 /* PokemonInfoRow.swift */,
 				BCC0420D2518555B00084678 /* PokemonListView.swift */,
 				BCC04212251859FB00084678 /* PokemonInfoPannel.swift */,
@@ -502,6 +507,7 @@
 				BCC042212518778F00084678 /* SettingView.swift */,
 				BC7F7D7E2519880900C14402 /* MainTab.swift */,
 				BC7F7DBA2519A6F500C14402 /* IndicatorView.swift */,
+				BCA012EA251AF6F4009B2026 /* SafariView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -719,6 +725,7 @@
 				BCC0421825186E4D00084678 /* Color.swift in Sources */,
 				BC7F7D85251989FB00C14402 /* AppState.swift in Sources */,
 				BCC042222518778F00084678 /* SettingView.swift in Sources */,
+				BCA012E2251AE861009B2026 /* OverlaySheet.swift in Sources */,
 				BC7F7DB1251999E000C14402 /* AppCommand.swift in Sources */,
 				BCC0421D251873A800084678 /* BlurView.swift in Sources */,
 				BC7F7DC82519CF3600C14402 /* LoadPokemonRequest.swift in Sources */,
@@ -730,6 +737,7 @@
 				BCC041F92518478900084678 /* PokemonViewModel.swift in Sources */,
 				BC7F7DBB2519A6F500C14402 /* IndicatorView.swift in Sources */,
 				BC7F7DA92519983800C14402 /* AppError.swift in Sources */,
+				BCA012EB251AF6F4009B2026 /* SafariView.swift in Sources */,
 				BCC041FB2518478900084678 /* Ability.swift in Sources */,
 				BCC041F82518478900084678 /* AbilityViewModel.swift in Sources */,
 				BC7F7D9525198EBB00C14402 /* User.swift in Sources */,

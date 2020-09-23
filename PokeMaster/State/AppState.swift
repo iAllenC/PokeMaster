@@ -14,6 +14,8 @@ struct AppState {
     
     var pokemonList = PokemonList()
     
+    var mainTab = MainTab()
+    
 }
 
 extension AppState {
@@ -93,16 +95,32 @@ extension AppState {
 extension AppState {
     
     struct PokemonList {
+        
+        struct SelectionState {
+            var expandingIndex: Int? = nil
+            var panelIndex: Int? = nil
+            var panelPresented = false
+
+            func isExpanding(_ id: Int) -> Bool {
+                expandingIndex == id
+            }
+        }
+        
         var loadingPokemons = false
         @FileStorage(directory: .cachesDirectory, fileName: "pokemons.json")
         var pokemons: [Int: PokemonViewModel]?
 
         var loadingAbilities = false
+        @FileStorage(directory: .cachesDirectory, fileName: "abilities.json")
         var abilities: [Int: AbilityViewModel]?
         
         var searchText: String?
         
-        var expandingIndex: Int?
+        var selectionState = SelectionState()
+        
+        var isSFViewActive = false
+        
+        var isFavoratingUnLogged = false
         
         var error: AppError?
 
@@ -111,9 +129,26 @@ extension AppState {
             return pokemons.sorted { $0.id < $1.id }
         }
         
-        func ablityViewModels(for pokemon: Pokemon) -> AbilityViewModel? {
-            abilities?[pokemon.id]
+        func ablityViewModels(for pokemon: Pokemon) -> [AbilityViewModel]? {
+            guard let abilities = abilities else { return nil }
+            return pokemon.abilities.compactMap {
+                guard let abilityId = $0.ability.url.extractedID else { return nil }
+                return abilities[abilityId]
+            }
         }
+    }
+    
+}
+
+extension AppState {
+    
+    struct MainTab {
+        enum Index: Hashable {
+            case list, settings
+        }
+        
+        var selection = Index.list
+        
     }
     
 }

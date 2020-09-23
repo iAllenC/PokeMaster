@@ -21,4 +21,8 @@ enum AppAction {
     case expandPokemonIndex(index: Int)
     case loadAbilities(pokemon: Pokemon)
     case loadAbilitiesDone(result: Result<[AbilityViewModel], AppError>)
+    case togglePanelPresenting(presenting: Bool)
+    case toggleSafariDisplaying(displaying: Bool)
+    case favoratePokemon(pokemon: Pokemon)
+    case gotoSettings
 }
