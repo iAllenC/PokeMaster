@@ -39,7 +39,7 @@ struct PokemonInfoPannel: View {
 //                print("改变模糊效果")
 //                blurStyle = blurStyle == .systemMaterial ? .systemMaterialDark : .systemMaterial
 //            }
-            Header2(model: model)
+            Header(model: model)
             pokemonDescription
             Divider()
             HStack {
@@ -213,6 +213,7 @@ extension PokemonInfoPannel {
         var body: some View {
             HStack(spacing: 18) {
                 pokemonIcon
+                    .offset(y: -82)
                 nameSpecies
                 Divider()
                     .background(Color.pokemonGray)

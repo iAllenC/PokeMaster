@@ -31,7 +31,7 @@ struct PokemonInfoRow: View {
                 Image(systemName: "chart.bar")
                     .modifier(ToolButtonModifier())
             }
-            //模态方式弹出
+            //Present
             Button(action: {
                 let displaying = !store.appState.pokemonList.isSFViewActive
                 store.dispatch(.toggleSafariDisplaying(displaying: displaying))
@@ -43,6 +43,7 @@ struct PokemonInfoRow: View {
                     store.dispatch(.toggleSafariDisplaying(displaying: false))
                 }
             }
+            //Push
 //            NavigationLink(
 //                destination: SafariView(url: model.detailPageURL) { store.dispatch(.toggleSafariDisplaying(displaying: false)) }
 //                    .navigationBarTitle(
