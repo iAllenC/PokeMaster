@@ -37,6 +37,7 @@ struct MainTab: View {
                 }
                 .tag(AppState.MainTab.Index.settings)
         }
+        .edgesIgnoringSafeArea(.bottom)
         .overlaySheet(isPresented: pokemonListBinding.selectionState.panelPresented) {
             if let panelIndex = selectedPanelIndex,
                let pokemons = pokemonList.pokemons,

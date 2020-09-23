@@ -39,7 +39,7 @@ struct OverlaySheet<Content: View>: View {
                 state.y = current.translation.height
             }
             .onEnded {
-                if $0.translation.height > 250 {
+                if $0.translation.height > 100 {
                     isPresented.wrappedValue = false
                 }
             }

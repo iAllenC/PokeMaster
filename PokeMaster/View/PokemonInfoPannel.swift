@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct PokemonInfoPannel: View {
     
@@ -38,10 +39,20 @@ struct PokemonInfoPannel: View {
 //                print("改变模糊效果")
 //                blurStyle = blurStyle == .systemMaterial ? .systemMaterialDark : .systemMaterial
 //            }
-            Header(model: model)
+            Header2(model: model)
             pokemonDescription
             Divider()
-            AbilityList(model: model, abilityModels: abilities)
+            HStack {
+                AbilityList(model: model, abilityModels: abilities)
+                RadarView(
+                    values: model.pokemon.stats.map { $0.baseStat },
+                    color: model.color,
+                    max: 120,
+                    progress: 1,
+                    shouldAnimate: true
+                )
+                    .frame(width: 100, height: 100)
+            }
         }
         .padding(EdgeInsets(top: 12, leading: 30, bottom: 30, trailing: 30))
 //        .background(Color.white)
@@ -59,6 +70,7 @@ extension PokemonInfoPannel {
         
         var pokemonIcon: some View {
             Image("Pokemon-\(model.id)")
+//            KFImage(model.iconImageURL)
                 .resizable()
                 .frame(width: 68, height: 68)
         }
@@ -131,6 +143,87 @@ extension PokemonInfoPannel {
             }
         }
         
+    }
+    
+    struct Header2: View {
+        
+        let model: PokemonViewModel
+        
+        var pokemonIcon: some View {
+            Image("Pokemon-\(model.id)")
+//            KFImage(model.iconImageURL)
+                .resizable()
+                .frame(width: 68, height: 68)
+        }
+        
+        var nameSpecies: some View {
+            VStack {
+                Text(model.name)
+                    .font(.system(size: 22))
+                    .fontWeight(.bold)
+                    .foregroundColor(model.color)
+                Text(model.nameEN)
+                    .font(.system(size: 13))
+                    .fontWeight(.bold)
+                    .foregroundColor(model.color)
+                Text(model.genus)
+                    .font(.system(size: 13))
+                    .fontWeight(.bold)
+                    .foregroundColor(.gray)
+                    .padding(.top, 10)
+            }
+        }
+        
+        var bodyInfo: some View {
+            VStack {
+                HStack {
+                    Text("身高")
+                        .foregroundColor(.pokemonGray)
+                        .font(.system(size: 11))
+                    Text(model.height)
+                        .foregroundColor(.pokemonGreen)
+                        .font(.system(size: 11))
+                }
+                HStack {
+                    Text("体重")
+                        .foregroundColor(.pokemonGray)
+                        .font(.system(size: 11))
+                    Text(model.weight)
+                        .foregroundColor(.pokemonGreen)
+                        .font(.system(size: 11))
+                }
+
+            }
+        }
+        
+        var typeInfo: some View {
+            HStack {
+                ForEach(model.types) {
+                    Text($0.name)
+                        .foregroundColor(.white)
+                        .font(.system(size: 11))
+                        .frame(width: 36, height: 14)
+                        .background($0.color)
+                        .cornerRadius(7)
+                }
+            }
+        }
+        
+        
+        var body: some View {
+            HStack(spacing: 18) {
+                pokemonIcon
+                nameSpecies
+                Divider()
+                    .background(Color.pokemonGray)
+                    .frame(width: 1, height: 44)
+                VStack(spacing: 10) {
+                    bodyInfo
+                    typeInfo
+                }
+            }
+        }
+
     }
     
     struct AbilityList: View {

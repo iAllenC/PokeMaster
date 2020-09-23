@@ -24,6 +24,9 @@
 		BCA012DC251A17C2009B2026 /* LoadAblitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012DB251A17C2009B2026 /* LoadAblitiesRequest.swift */; };
 		BCA012E2251AE861009B2026 /* OverlaySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012E1251AE861009B2026 /* OverlaySheet.swift */; };
 		BCA012EB251AF6F4009B2026 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012EA251AF6F4009B2026 /* SafariView.swift */; };
+		BCA012F9251B2699009B2026 /* FlowRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012F8251B2699009B2026 /* FlowRectangle.swift */; };
+		BCA012FE251B2845009B2026 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA012FD251B2845009B2026 /* RadarView.swift */; };
+		BCA01304251B31DE009B2026 /* FrameAndLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA01303251B31DE009B2026 /* FrameAndLayout.swift */; };
 		BCC0413E2518473100084678 /* PokeMasterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC0413D2518473100084678 /* PokeMasterApp.swift */; };
 		BCC041422518473300084678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC041412518473300084678 /* Assets.xcassets */; };
 		BCC041452518473300084678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCC041442518473300084678 /* Preview Assets.xcassets */; };
@@ -142,6 +145,9 @@
 		BCA012DB251A17C2009B2026 /* LoadAblitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAblitiesRequest.swift; sourceTree = "<group>"; };
 		BCA012E1251AE861009B2026 /* OverlaySheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlaySheet.swift; sourceTree = "<group>"; };
 		BCA012EA251AF6F4009B2026 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		BCA012F8251B2699009B2026 /* FlowRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowRectangle.swift; sourceTree = "<group>"; };
+		BCA012FD251B2845009B2026 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
+		BCA01303251B31DE009B2026 /* FrameAndLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameAndLayout.swift; sourceTree = "<group>"; };
 		BCC0413A2518473100084678 /* PokeMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCC0413D2518473100084678 /* PokeMasterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeMasterApp.swift; sourceTree = "<group>"; };
 		BCC041412518473300084678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				BCC0413C2518473100084678 /* PokeMaster */,
-				BCC0414E2518473300084678 /* PokeMasterTests */,
 				BCC041592518473300084678 /* PokeMasterUITests */,
 				BCC0413B2518473100084678 /* Products */,
 			);
@@ -337,6 +342,7 @@
 		BCC041432518473300084678 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				BCC0414E2518473300084678 /* PokeMasterTests */,
 				BCC041442518473300084678 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -508,6 +514,9 @@
 				BC7F7D7E2519880900C14402 /* MainTab.swift */,
 				BC7F7DBA2519A6F500C14402 /* IndicatorView.swift */,
 				BCA012EA251AF6F4009B2026 /* SafariView.swift */,
+				BCA012F8251B2699009B2026 /* FlowRectangle.swift */,
+				BCA012FD251B2845009B2026 /* RadarView.swift */,
+				BCA01303251B31DE009B2026 /* FrameAndLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -714,6 +723,7 @@
 				BCA012D02519F9ED009B2026 /* RegisterRequest.swift in Sources */,
 				BC7F7DB62519A58D00C14402 /* FileStore.swift in Sources */,
 				BC7F7D7F2519880900C14402 /* MainTab.swift in Sources */,
+				BCA01304251B31DE009B2026 /* FrameAndLayout.swift in Sources */,
 				BCC041FA2518478900084678 /* Language.swift in Sources */,
 				BCC0413E2518473100084678 /* PokeMasterApp.swift in Sources */,
 				BCC0420E2518555B00084678 /* PokemonListView.swift in Sources */,
@@ -722,6 +732,7 @@
 				BC7F7DC22519C7E900C14402 /* EmailCheckingRequest.swift in Sources */,
 				BC7F7DA1251997D400C14402 /* LoginRequest.swift in Sources */,
 				BCC041FD2518478900084678 /* PokemonSpecies.swift in Sources */,
+				BCA012F9251B2699009B2026 /* FlowRectangle.swift in Sources */,
 				BCC0421825186E4D00084678 /* Color.swift in Sources */,
 				BC7F7D85251989FB00C14402 /* AppState.swift in Sources */,
 				BCC042222518778F00084678 /* SettingView.swift in Sources */,
@@ -731,6 +742,7 @@
 				BC7F7DC82519CF3600C14402 /* LoadPokemonRequest.swift in Sources */,
 				BCC041FF2518478900084678 /* Sample.swift in Sources */,
 				BC7F7D9A2519948200C14402 /* AppAction.swift in Sources */,
+				BCA012FE251B2845009B2026 /* RadarView.swift in Sources */,
 				BCC041FE2518478900084678 /* FileHelper.swift in Sources */,
 				BCA012DC251A17C2009B2026 /* LoadAblitiesRequest.swift in Sources */,
 				BCC04206251848C300084678 /* PokemonInfoRow.swift in Sources */,
