@@ -18,7 +18,7 @@ struct FrameAndLayout: View {
                     10
                 })
                 .alignmentGuide(VerticalAlignment.center, computeValue: { dimension in
-                    dimension[.bottom] + (dimension[.leading] ?? 0 )
+                    dimension[.bottom] + dimension[.leading]
                 })
             Image(systemName: "person.circle")
                 .background(Color.yellow)
@@ -45,9 +45,9 @@ struct FrameAndLayout: View {
             Text("User:")
                 .font(.footnote)
                 .foregroundColor(.green)
-//                .alignmentGuide(.select, computeValue: { dimension in
-//                    dimension[.bottom] + CGFloat(selectedIndex) * 20.3
-//                })
+                .alignmentGuide(.select, computeValue: { dimension in
+                    dimension[.bottom] + CGFloat(selectedIndex) * 20.3
+                })
             Image(systemName: "person.circle")
                 .foregroundColor(.green)
                 .alignmentGuide(.select, computeValue: { dimension in
@@ -72,12 +72,27 @@ struct FrameAndLayout: View {
         }.animation(.linear(duration: 0.2))
     }
     
+    var view3: some View {
+        ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)) {
+            Text("Hello")
+                .background(Color.green)
+                .alignmentGuide(HorizontalAlignment.leading, computeValue: { d in return 0 })
+                .alignmentGuide(VerticalAlignment.center, computeValue: { d in return -20 })
+            
+            Text("World")
+//                .alignmentGuide(.leading, computeValue: { d in return 100 })
+                .alignmentGuide(HorizontalAlignment.leading, computeValue: { d in return 100 })
+                .background(Color.purple)
+        }
+        .background(Color.orange)
+    }
+    
     var body: some View {
-        view2
-//        VStack(spacing: 20) {
-//            view1
-//            view2
-//        }
+        VStack(spacing: 20) {
+            view1
+            view2
+            view3
+        }
     }
 }
 

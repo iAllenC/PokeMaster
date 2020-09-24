@@ -158,6 +158,9 @@ extension PokemonInfoPannel {
         
         var nameSpecies: some View {
             VStack {
+                ZStack(alignment: .topLeading) {
+                    Text("Hello")
+                }
                 Text(model.name)
                     .font(.system(size: 22))
                     .fontWeight(.bold)

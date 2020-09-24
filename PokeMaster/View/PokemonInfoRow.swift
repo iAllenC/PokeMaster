@@ -33,16 +33,18 @@ struct PokemonInfoRow: View {
             }
             //Present
             Button(action: {
+                print("Expanded:\(expanded)")
                 let displaying = !store.appState.pokemonList.isSFViewActive
                 store.dispatch(.toggleSafariDisplaying(displaying: displaying))
             }) {
                 Image(systemName: "info.circle")
                     .modifier(ToolButtonModifier())
-            }.sheet(isPresented: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)) {
-                SafariView(url: model.detailPageURL) {
-                    store.dispatch(.toggleSafariDisplaying(displaying: false))
-                }
             }
+//            .sheet(isPresented: expanded ? $store.appState.pokemonList.isSFViewActive : .constant(false)) {
+//                SafariView(url: model.detailPageURL) {
+//                    store.dispatch(.toggleSafariDisplaying(displaying: false))
+//                }
+//            }
             //Push
 //            NavigationLink(
 //                destination: SafariView(url: model.detailPageURL) { store.dispatch(.toggleSafariDisplaying(displaying: false)) }

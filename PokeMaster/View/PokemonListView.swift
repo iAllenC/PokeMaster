@@ -38,7 +38,14 @@ struct PokemonListView: View {
                     })
 
             }
-        }
+        }.sheet(isPresented: $store.appState.pokemonList.isSFViewActive, content: {
+            if let pokemonDetailUrl = pokemonsToDisplay.first{ $0.id == store.appState.pokemonList.selectionState.expandingIndex }?
+                .detailPageURL {
+                SafariView(url: pokemonDetailUrl) {
+                    store.dispatch(.toggleSafariDisplaying(displaying: false))
+                }
+            }
+        })
     }
     
     var body: some View {
